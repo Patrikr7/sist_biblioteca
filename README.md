@@ -9,7 +9,7 @@
 > * Pesquisa de livros através de um filtro, podendo escolher por Título, Autor, Editora, Ano de lançamento e Categoria;
 
 
-## Configuração do sistema:
+## Configurações do sistema:
 
 #### 1º Instalar o banco de dados que se encontra na pasta:
 > * Biblioteca/BD/git_biblioteca.sql
