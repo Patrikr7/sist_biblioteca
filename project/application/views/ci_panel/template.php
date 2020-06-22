@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	
 	<meta name="robots" content="index, follow" />
 
-	<link rel="base" href="<?php echo base_url('index.php/') ?>" />
+	<link rel="base" href="<?php echo base_url() ?>" />
 	<link rel="canonical" href="<?php echo base_url($url) ?>" />
 	<link rel="author" href="" />
 
