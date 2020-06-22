@@ -68,7 +68,7 @@ class Book extends CI_Controller
             'title_page' => 'Editar Livro',
             'message' => 'Editar Livro!',
             'url' => "",
-            'book' => $this->book_model->getBooks($this->uri->segment(4)),
+            'book' => $this->book_model->getBook($this->uri->segment(4)),
             'categories' => $this->bookCategories_model->ListCategories(),
         );
         $this->template->load('ci_panel/template', 'ci_panel/book/update', $dados);

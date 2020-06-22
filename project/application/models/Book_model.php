@@ -12,19 +12,19 @@ class Book_model extends CI_Model
 
     private $Limit;
 
-    public function getBooks($limit, $start, $uri = false)
+    public function getBooks($limit, $start)
     {
-        if ($uri === false) :
-            return $this->db->select('*')
-                ->from($this->table)
-                ->order_by('book_title', 'ASC')
-                ->limit($limit, $start)
-                ->get()
-                ->result_array();
-        else :
-            $query = $this->db->get_where($this->table, array('book_url' => $uri));
-            return $query->row();
-        endif;
+        return $this->db->select('*')
+            ->from($this->table)
+            ->order_by('book_title', 'ASC')
+            ->limit($limit, $start)
+            ->get()
+            ->result_array();
+    }
+
+    public function getBook($uri)
+    {
+        return $this->db->get_where($this->table, array('book_url' => $uri))->row();
     }
 
     public function getCount()
