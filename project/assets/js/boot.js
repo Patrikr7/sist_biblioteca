@@ -107,25 +107,40 @@ $('#form_filter').on('submit', function(e) {
             form.find('.form_load').fadeIn(1000);
         },
         success: function(data) {
-            if (data.success) {
+            if (data.filter.length > 0) {
+                console.log(data.filter);
                 form.find('.form_load').fadeOut(1000);
-                //REDIRECIONA
-                if (data.redirect) {
-                    window.setTimeout(function() {
-                        window.location.href = BASE + data.redirect;
-                    }, 50);
-                }
+                $('#result-filter').html('');
+
+
+                var book = '';
+                $.each(data.filter, function(index, value) {
+
+                    book += '<div class="col-md-3"><div class="card mb-4">';
+                    book += "<img class=\"card-img-top\" src=\"" + BASE + "assets/uploads/book/" + value.book_img + "\" alt=\"\">";
+                    book += '<div class="card-body text-center">';
+                    book += '<h5 class="card-title">';
+                    book += "<a href=\"" + BASE + "painel/livros/update/" + value.book_url + "\">" + value.book_title + "</a>";
+                    book += '</h5>';
+
+                    book += '<div class="content mb-3">';
+                    book += "<span class=\"text-secondary d-block\"><b>Autor: </b>" + value.book_author + "</span>";
+                    book += "<span class=\"text-secondary d-block\"><b>Editora: </b>" + value.book_publishing + "</span>";
+                    book += "<span class=\"text-secondary d-block\"><b>Lançamento: </b>" + value.book_launch + "</span>";
+                    book += "<span class=\"text-secondary d-block\"><b>Quant: </b>" + value.book_amount + "</span>";
+                    book += '</div>';
+
+                    book += "<a href=\"" + BASE + "painel/livros/update/" + value.book_url + "\" class=\"btn badge badge-primary\">Editar</a> <span class=\"btn badge badge-danger button_action\" rel=\"Deseja excluir?\" callback=\"livros\" callback_action=\"delete\" id=\"book_id\" title=\"Excluir Livro\">Excluir</span>";
+
+                    book += '</div>'
+                    book += '</div></div>';
+
+                });
+
+                $('#result-filter').html(book);
 
             } else {
-                toastr.error(data.error, "", {
-                    "closeButton": true,
-                    "positionClass": "toast-top-right",
-                    "progressBar": true,
-                    "showDuration": "400",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000"
-                });
+                $('#result-filter').html("<div class=\"col-md-12 text-center\"><div class=\"alert alert-warning\" role=\"alert\">Nenhum <strong>livro</strong> encontrado, refaça sua pesquisa!</div></div>");
                 form.find('.form_load').fadeOut(1000);
             }
         }

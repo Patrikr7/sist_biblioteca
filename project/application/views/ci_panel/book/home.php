@@ -16,18 +16,21 @@
 		<div class="col-md-12">
 			<?php $this->load->view('ci_panel/book/filter');?>
 		</div>
+	</div>
+
+	<div class="row" id="result-filter">
 		<?php foreach ($books as $book): ?>
 		<div class="col-md-3">
 			<div class="card mb-4">
 				<img class="card-img-top" src="<?php echo base_url('assets/uploads/book/' . $book['book_img']) ?>"
-				 alt="">
+				alt="">
 				<div class="card-body text-center">
 					<h5 class="card-title">
 						<a href="<?php echo base_url('painel/livros/update/' . $book['book_url']) ?>">
 							<?php echo $book['book_title']; ?>
 						</a>
 					</h5>
-					<div class="content">
+					<div class="content mb-3">
 						<span class="text-secondary d-block">
 							<b>Autor:</b>
 							<?php echo $book['book_author']; ?>
@@ -45,15 +48,15 @@
 							<?php echo $book['book_amount']; ?>
 						</span>
 					</div>
-					<p class="card-text bg-secondary"></p>
 					<a href="<?php echo base_url('painel/livros/update/' . $book['book_url']) ?>"
-					 class="btn badge badge-primary">Editar</a>
+					class="btn badge badge-primary">Editar</a>
 					<span class="btn badge badge-danger button_action" rel="Deseja excluir?" callback="livros" callback_action='delete' id="<?php echo $book['book_id']; ?>"
-					 title="Excluir Livro">Excluir</span>
+					title="Excluir Livro">Excluir</span>
 				</div>
 			</div>
 		</div>
 		<?php endforeach;?>
 	</div>
+
 	<?php endif;?>
 </div>

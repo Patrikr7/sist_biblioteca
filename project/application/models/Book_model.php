@@ -173,6 +173,7 @@ class Book_model extends CI_Model
 
     public function search()
     {
+        $json = [];
         $dados_form = $this->input->post();
 
         $Where = array('1=1');
@@ -192,16 +193,15 @@ class Book_model extends CI_Model
             $Where[] = "(CONCAT(',', book_categories, ',') LIKE '%,{$dados_form["book_categories"]},%')";
         endif;
 
-        $_SESSION['filter'] = $this->db->select('*')
+        $json['filter'] = $this->db->select('*')
             ->where(implode(' AND ', $Where))
             ->order_by('book_title', 'ASC')
             ->from($this->table)
             ->get()
             ->result_array();
 
-        $json = [];
-        $json['success'] = 'success';
-        $json['redirect'] = 'painel/livros/pesquisa';
+        //$json['success'] = 'success';
+        //$json['redirect'] = 'painel/livros/pesquisa';
 
         echo json_encode($json);
     }
