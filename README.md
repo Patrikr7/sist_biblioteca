@@ -1,4 +1,4 @@
-## Este sistema foi desenvolvido para estudos usando framework "Codeigniter 3.1.11" com tema "Biblioteca". Contendo as funçoes principais CRUD.
+## Este sistema foi desenvolvido para estudos usando framework "Codeigniter 3.1.11" com tema "Biblioteca". Contendo as funções principais CRUD.
 
 ## Gerenciamentos:
 > * Create, Read, Update e Delete: Livros;
