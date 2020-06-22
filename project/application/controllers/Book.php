@@ -11,14 +11,39 @@ class Book extends CI_Controller
         $this->load->library('upload', config_upload('./assets/uploads/', 'jpg|png', 1500, 'book'));
     }
 
-    public function index()
+    public function page_index($page = null)
     {
+        $url = base_url('painel/livros');
+        $total_rows = $this->book_model->getCount();
+        $per_page = 3;
+        $totalPages = ceil($total_rows / $per_page); 
+
+        $curr_page = 0;
+
+        if(empty($this->uri->segment(3))):
+            $page = 1;
+        endif;
+
+        if(isset($page) && trim($page) != ''):
+            if ((($per_page * $page) - $per_page) > 0) {
+                $curr_page = (($per_page * $page) - $per_page);
+            }
+        endif;
+
+        if(($page > $totalPages || $page < 1) && $total_rows != 0):
+            redirect('painel/livros/' . $totalPages, 'refresh');
+            exit;
+        endif;        
+
+        $this->pagination->initialize(config_pagination($url, $total_rows, $per_page));
+
         $dados = [
             'title' => 'Livros',
             'title_page' => 'Listar Livros',
             'message' => 'Listar Livros!',
             'url' => "",
-            'books' => $this->book_model->getBooks(),
+            'books' => $this->book_model->getBooks($per_page, $curr_page),
+            'links'      => $this->pagination->create_links(),
             'categories' => $this->bookCategories_model->ListCategories()
         ];
         $this->template->load('ci_panel/template', 'ci_panel/book/home', $dados);

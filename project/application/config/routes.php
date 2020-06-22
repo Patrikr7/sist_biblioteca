@@ -71,7 +71,7 @@ $route['painel/clientes/update/(:any)'] = 'client/page_update';
 $route['painel/clientes/delete'] = 'client/delete';
 
 // LIVROS
-$route['painel/livros'] = 'book';
+$route['painel/livros'] = 'book/page_index';
 $route['painel/livros/novo'] = 'book/page_create';
 $route['painel/livros/pesquisa'] = 'book/page_filter';
 $route['painel/livros/create']['post'] = 'book/create';
@@ -79,6 +79,7 @@ $route['painel/livros/update']['post'] = 'book/update';
 $route['painel/livros/filter']['post'] = 'book/filter';
 $route['painel/livros/update/(:any)'] = 'book/page_update';
 $route['painel/livros/delete'] = 'book/delete';
+$route['painel/livros/(:num)'] = 'book/page_index/$1';
 
 //CATEGORIA LIVROS
 $route['painel/categorias'] = 'bookCategories';

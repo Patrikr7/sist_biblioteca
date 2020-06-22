@@ -12,15 +12,27 @@ class Book_model extends CI_Model
 
     private $Limit;
 
-    public function getBooks($uri = false)
+    public function getBooks($limit, $start, $uri = false)
     {
-        if ($uri === false):
-            $query = $this->db->get($this->table);
-            return $query->result_array();
-        else:
+        if ($uri === false) :
+            return $this->db->select('*')
+                ->from($this->table)
+                ->order_by('book_title', 'ASC')
+                ->limit($limit, $start)
+                ->get()
+                ->result_array();
+        else :
             $query = $this->db->get_where($this->table, array('book_url' => $uri));
             return $query->row();
         endif;
+    }
+
+    public function getCount()
+    {
+        return $this->db->select('*')
+            ->from($this->table)
+            ->get()
+            ->num_rows();
     }
 
     //BUSCA LIVRO PELO TITULO
@@ -46,9 +58,9 @@ class Book_model extends CI_Model
 
         $query = $this->db->where($array)->get($this->table)->num_rows();
 
-        if ($query > 0):
+        if ($query > 0) :
             return $url . '-' . $id;
-        else:
+        else :
             return $url;
         endif;
     }
@@ -57,7 +69,7 @@ class Book_model extends CI_Model
     {
         $this->Limit = (int) $limit;
 
-        if ($read):
+        if ($read) :
             $this->db->select('*')
                 ->where('book_read >', '0')
                 ->order_by('book_read', 'DESC')
@@ -66,7 +78,7 @@ class Book_model extends CI_Model
             $query = $this->db->get();
 
             return $query->result_array();
-        else:
+        else :
             $this->db->select('*')
                 ->order_by('book_date', 'DESC')
                 ->limit($this->Limit)
@@ -98,9 +110,9 @@ class Book_model extends CI_Model
     {
         $this->db->insert($this->table, $data);
 
-        if ($this->db->insert_id()):
+        if ($this->db->insert_id()) :
             return true;
-        else:
+        else :
             return false;
         endif;
     }
@@ -111,9 +123,9 @@ class Book_model extends CI_Model
         unset($data['book_id']);
         $this->db->update($this->table, $data);
 
-        if ($this->db->affected_rows() === 0 || $this->db->affected_rows() > 0):
+        if ($this->db->affected_rows() === 0 || $this->db->affected_rows() > 0) :
             return true;
-        else:
+        else :
             return false;
         endif;
     }
@@ -132,20 +144,20 @@ class Book_model extends CI_Model
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $book = $this->getBookId($dados['del_id']);
 
-        if (!$book):
+        if (!$book) :
             $json['error'] = 'Oppss! você tentou remover um livro que não existe!';
             $json['type'] = "warning";
 
-        elseif ($this->bookLeased_model->getBookId($dados['del_id'])):
+        elseif ($this->bookLeased_model->getBookId($dados['del_id'])) :
             $json['error'] = 'Oppss! você tentou remover um livro que está em uso ou já foi reservado!';
             $json['type'] = "warning";
 
-        else:
+        else :
             $this->db->delete($this->table, array('book_id' => $dados['del_id']));
-            if ($this->db->affected_rows()):
+            if ($this->db->affected_rows()) :
                 unlink('./assets/uploads/book/' . $book['book_img']);
                 $json['success'] = "Cliente deletado com sucesso!";
-            else:
+            else :
                 $json['error'] = "Erro ao deletar o livro, entre em contato com suporte!";
                 $json['type'] = 'warning';
             endif;
@@ -177,19 +189,19 @@ class Book_model extends CI_Model
         $dados_form = $this->input->post();
 
         $Where = array('1=1');
-        if (!empty($dados_form["book_title"])):
+        if (!empty($dados_form["book_title"])) :
             $Where[] = "(book_title LIKE '%{$dados_form["book_title"]}%')";
         endif;
-        if (!empty($dados_form["book_author"])):
+        if (!empty($dados_form["book_author"])) :
             $Where[] = "(book_author LIKE '%{$dados_form["book_author"]}%')";
         endif;
-        if (!empty($dados_form["book_publishing"])):
+        if (!empty($dados_form["book_publishing"])) :
             $Where[] = "(book_publishing LIKE '%{$dados_form["book_publishing"]}%')";
         endif;
-        if (!empty($dados_form["book_launch"])):
+        if (!empty($dados_form["book_launch"])) :
             $Where[] = "(book_launch LIKE '%{$dados_form['book_launch']}%')";
         endif;
-        if (!empty($dados_form["book_categories"])):
+        if (!empty($dados_form["book_categories"])) :
             $Where[] = "(CONCAT(',', book_categories, ',') LIKE '%,{$dados_form["book_categories"]},%')";
         endif;
 

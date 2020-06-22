@@ -16,6 +16,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Livros</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown08">
 					<a class="dropdown-item" href="<?php echo base_url('painel/livros'); ?>">Visualizar</a>
+					<a class="dropdown-item" href="<?php echo base_url('painel/livros/novo'); ?>">Novo livro</a>
 					<a class="dropdown-item" href="<?php echo base_url('painel/categorias'); ?>">Categorias</a>
 				</div>
 			</li>
