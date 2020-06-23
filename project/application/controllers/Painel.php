@@ -22,7 +22,7 @@ class Painel extends CI_Controller
 			'message' => 'Aqui você encontra o painel!',
 			'url' => "",
 			'countClient' => count($this->client_model->getClients()),
-			'countBook' => count($this->book_model->getBooks()),
+			'countBook' => $this->book_model->getCount(),
 			'countBookLeased' => (empty($this->bookLeased_model->getBookLeasedsJoin()) ? '0' : count($this->bookLeased_model->getBookLeasedsJoin())),
 			'books' => $this->book_model->getLimitBooks(4),
 			'booksRead' => $this->book_model->getLimitBooks(4, true)
