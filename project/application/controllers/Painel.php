@@ -17,8 +17,8 @@ class Painel extends CI_Controller
 	public function index()
 	{
 		$dados = [
-			'title'   => 'Painel',
-			'title_page' => 'TITLE PAGE',
+			'title'   => 'Painel | ' . TITLE_NAME,
+			'title_page' => 'Painel',
 			'message' => 'Aqui você encontra o painel!',
 			'url' => "",
 			'countClient' => count($this->client_model->getClients()),

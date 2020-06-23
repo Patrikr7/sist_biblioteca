@@ -15,7 +15,7 @@ class BookLeased extends CI_Controller
     public function index()
     {
         $dados = [
-            'title' => 'Livros Locado',
+            'title' => 'Livros Locado | ' . TITLE_NAME,
             'title_page' => 'Livros Locado',
             'message' => 'Livros Locado!',
             'url' => "",
@@ -27,7 +27,7 @@ class BookLeased extends CI_Controller
     public function page_create()
     {
         $dados = array(
-            'title' => 'Locação',
+            'title' => 'Locação | ' . TITLE_NAME,
             'title_page' => 'Locação',
             'message' => 'Locação!',
             'url' => "",

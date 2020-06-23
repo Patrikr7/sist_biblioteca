@@ -38,7 +38,7 @@ class Book extends CI_Controller
         $this->pagination->initialize(config_pagination($url, $total_rows, $per_page));
 
         $dados = [
-            'title' => 'Livros',
+            'title' => 'Livros | ' . TITLE_NAME,
             'title_page' => 'Listar Livros',
             'message' => 'Listar Livros!',
             'url' => "",
@@ -52,7 +52,7 @@ class Book extends CI_Controller
     public function page_create()
     {
         $dados = array(
-            'title' => 'Livro',
+            'title' => 'Novo Livro | ' . TITLE_NAME,
             'title_page' => 'Novo Livro',
             'message' => 'Novo Livro!',
             'url' => "",
@@ -64,7 +64,7 @@ class Book extends CI_Controller
     public function page_update()
     {
         $dados = array(
-            'title' => 'Editar Livro',
+            'title' => 'Editar Livro | ' . TITLE_NAME,
             'title_page' => 'Editar Livro',
             'message' => 'Editar Livro!',
             'url' => "",
@@ -77,7 +77,7 @@ class Book extends CI_Controller
     public function page_filter()
     {
         $dados = array(
-            'title' => 'Confira o resultado de sua pesquisa',
+            'title' => 'Confira o resultado de sua pesquisa | ' . TITLE_NAME,
             'title_page' => 'Sua pesquisa retornou <b>'.count($this->session->filter).'</b> resultado(s)',
             'message' => 'Página de Filtro!',
             'url' => "",

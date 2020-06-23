@@ -14,7 +14,7 @@ class Setup extends CI_Controller
 	public function index()
 	{
 		$dados = array(
-			'title'   => 'INICIAL TEMPLATE',
+			'title'   => 'INICIAL TEMPLATE | ' . TITLE_NAME,
 			'description' => 'DESCRIPTION',
 			'image' => 'site.jpg',
 			'title_page' => 'TITLE PAGE',

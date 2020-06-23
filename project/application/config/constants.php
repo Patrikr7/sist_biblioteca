@@ -85,5 +85,8 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // Utilização em toda a aplicação
-define('TITLE_NAME', 'SITE TEMPLATE');
+define('TITLE_NAME', 'Sistema para Biblioteca');
 define('FAVICON', 'favicon.png');
+define('DEV_NAME', 'EPR Developer Web');
+define('DEV_EMAIL', 'patrikr11@gmail.com');
+define('DEV_SITE', 'https://www.emersonpribeiro.com.br');

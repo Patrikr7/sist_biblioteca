@@ -13,7 +13,7 @@ class BookCategories extends CI_Controller
     public function index()
     {
         $dados = [
-            'title' => 'Categorias',
+            'title' => 'Categorias | ' . TITLE_NAME,
             'title_page' => 'Listar Categorias',
             'message' => 'Listar Categories!',
             'url' => "",
@@ -25,7 +25,7 @@ class BookCategories extends CI_Controller
     public function page_create()
     {
         $dados = array(
-            'title' => 'Nova Categoria',
+            'title' => 'Nova Categoria | ' . TITLE_NAME,
             'title_page' => 'Nova Categoria',
             'message' => 'Nova Categoria!',
             'url' => "",
@@ -37,7 +37,7 @@ class BookCategories extends CI_Controller
     public function page_update()
     {
         $dados = array(
-            'title' => 'Atualizar Categoria',
+            'title' => 'Atualizar Categoria | ' . TITLE_NAME,
             'title_page' => 'Atualizar Categoria',
             'message' => 'Atualizar Categoria!',
             'url' => "",

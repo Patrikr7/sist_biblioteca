@@ -14,7 +14,7 @@ class Client extends CI_Controller
     public function index()
     {
         $dados = [
-            'title' => 'Clientes',
+            'title' => 'Clientes | ' . TITLE_NAME,
             'title_page' => 'Listar Clientes',
             'message' => 'Listar Clientes!',
             'url' => "",
@@ -26,7 +26,7 @@ class Client extends CI_Controller
     public function page_create()
     {
         $dados = array(
-            'title' => 'Novo Cliente',
+            'title' => 'Novo Cliente | ' . TITLE_NAME,
             'title_page' => 'Novo Cliente',
             'message' => 'Novo Cliente!',
             'url' => "",
@@ -39,7 +39,7 @@ class Client extends CI_Controller
     public function page_update()
     {
         $dados = array(
-            'title' => 'Atualizar Cliente',
+            'title' => 'Atualizar Cliente | ' . TITLE_NAME,
             'title_page' => 'Atualizar Cliente',
             'message' => 'Atualizar Cliente!',
             'url' => "",

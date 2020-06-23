@@ -48,4 +48,3 @@ class Landingpage extends CI_Controller
 		$this->template->load('template', 'contact-view', $dados);
 	}
 }
-}
