@@ -1,6 +1,6 @@
 <div class="container py-4">
 	<div class="row">
-		<div class="col-md-4 mt-4 mb-4">
+		<div class="col-md-4 mb-4">
 			<div class="card text-center">
 				<div class="card-body">
 					<h5 class="card-title">
@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 mt-4 mb-4">
+		<div class="col-md-4 mb-4">
 			<div class="card text-center">
 				<div class="card-body">
 					<h5 class="card-title">
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 mt-4 mb-4">
+		<div class="col-md-4 mb-4">
 			<div class="card text-center">
 				<div class="card-body">
 					<h5 class="card-title">
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 mb-4">
 			<div class="card">
 				<div class="card-header">
 					Livros mais lidos
@@ -53,10 +53,10 @@
                         <?php else : foreach ($booksRead as $lista) : ?>
 							<article class="py-3 pr-3 pl-3 mb-3 border-top border-right border-bottom border-left article_books">
                                 <div class="row">
-                                    <div class="col-md-3 align-self-center">
+                                    <div class="col-md-3 col-4 align-self-center">
 									<a href="<?php base_url('painel/livros/update/'.$lista["book_url"]) ?>" title="<?php echo $lista['book_title']; ?>"><img class="img-fluid rounded" src="<?php echo ($lista["book_img"] !== null) ? base_url('/assets/uploads/book/' . $lista['book_img']) : base_url('assets/img/book.png'); ?>" alt="<?php echo $lista['book_title']; ?>" title="<?php echo $lista['book_title'] ?>"></a>
                                     </div>
-                                    <div class="col-md-9 align-self-center">
+                                    <div class="col-md-9 col-8 align-self-center">
 										<div class="box-content">
                                             <header class="box-header">
                                                 <h5><a href="<?php echo base_url('/painel/livros/update/'.$lista['book_url']); ?>" title="<?php echo $lista['book_title'] ?>"><?php echo $lista['book_title'] ?></a></h5>
@@ -94,10 +94,10 @@
                         <?php else : foreach ($books as $Book) : ?>
                             <article class="py-3 pr-3 pl-3 mb-3 border-top border-right border-bottom border-left article_books">
                                 <div class="row">
-                                    <div class="col-md-3 align-self-center">
+                                    <div class="col-md-3 col-4 align-self-center">
                                         <a href="<?php echo base_url('painel/livros/update/'.$Book["book_url"]) ?>" title="<?php echo $Book['book_title']; ?>"><img class="img-fluid rounded" src="<?php echo ($Book["book_img"] !== null) ? base_url('/assets/uploads/book/' . $Book['book_img']) : base_url('assets/img/book.png'); ?>" alt="<?php echo $Book['book_title']; ?>" title="<?php echo $Book['book_title'] ?>"></a>
                                     </div>
-                                    <div class="col-md-9 align-self-center">
+                                    <div class="col-md-9 col-8 align-self-center">
                                         <div class="box-content">
                                             <header class="box-header">
                                                 <h5><a href="<?php echo base_url('/painel/livros/update/'.$Book['book_url']); ?>" title="<?php echo $Book['book_title'] ?>"><?php echo $Book['book_title'] ?></a></h5>
